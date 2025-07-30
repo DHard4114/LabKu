@@ -1,0 +1,28 @@
+# Umum
+node_modules/
+.env
+.DS_Store
+.vscode/
+dist/
+build/
+*.log
+
+# Frontend (Next.js / React / Vite / dll)
+fe/.next/
+fe/node_modules/
+fe/out/
+fe/.env.local
+fe/.env.development.local
+fe/.env.production.local
+fe/.turbo/
+
+# Backend (Express / Node.js / NestJS / dkk)
+be/node_modules/
+be/dist/
+be/.env
+be/.env.local
+be/.env.development.local
+be/.env.production.local
+
+# Optional: jika kamu pakai .vercel atau local deployment
+.vercel/
