@@ -25,13 +25,21 @@ app.use(cors({
 }));
 */}
 
-
-
 // Izinkan semua origin
 app.use(cors({
-  origin: '*', // <= mengizinkan SEMUA domain mengakses
-  credentials: false // <= set false kalau pakai '*' untuk origin
+  origin: [
+    process.env.FRONT_END_URL,
+    'https://lab-ku.vercel.app',
+    'https://lab-ku-database.vercel.app',
+    'http://localhost:3000'
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+  preflightContinue: false,
+  optionsSuccessStatus: 204
 }));
+
 
 app.use(express.json());
 
