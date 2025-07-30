@@ -15,22 +15,22 @@ exports.createBiodata = async (data) => {
         user_id, nama, tempat_lahir, tanggal_lahir, alamat, foto_profil,
         nama_ayah, pekerjaan_ayah, nama_ibu, pekerjaan_ibu,
         minat, bakat, cita_cita, harapan_setahun, harapan_lulus,
-        kegiatan_harian, ekstrakurikuler
+        kegiatan_harian, ekstrakurikuler, gambaran_diri
     } = data;
     const result = await db.query(
         `INSERT INTO biodata_siswa (
             user_id, nama, tempat_lahir, tanggal_lahir, alamat, foto_profil,
             nama_ayah, pekerjaan_ayah, nama_ibu, pekerjaan_ibu,
             minat, bakat, cita_cita, harapan_setahun, harapan_lulus,
-            kegiatan_harian, ekstrakurikuler
+            kegiatan_harian, ekstrakurikuler, gambaran_diri
         ) VALUES (
-            $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17
+            $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17, $18
         ) RETURNING *`,
         [
             user_id, nama, tempat_lahir, tanggal_lahir, alamat, foto_profil,
             nama_ayah, pekerjaan_ayah, nama_ibu, pekerjaan_ibu,
             minat, bakat, cita_cita, harapan_setahun, harapan_lulus,
-            kegiatan_harian, ekstrakurikuler
+            kegiatan_harian, ekstrakurikuler, gambaran_diri
         ]
     );
     return result.rows[0];
@@ -41,20 +41,20 @@ exports.updateBiodata = async (id, data) => {
         nama, tempat_lahir, tanggal_lahir, alamat, foto_profil,
         nama_ayah, pekerjaan_ayah, nama_ibu, pekerjaan_ibu,
         minat, bakat, cita_cita, harapan_setahun, harapan_lulus,
-        kegiatan_harian, ekstrakurikuler
+        kegiatan_harian, ekstrakurikuler, gambaran_diri
     } = data;
     const result = await db.query(
         `UPDATE biodata_siswa SET
             nama=$1, tempat_lahir=$2, tanggal_lahir=$3, alamat=$4, foto_profil=$5,
             nama_ayah=$6, pekerjaan_ayah=$7, nama_ibu=$8, pekerjaan_ibu=$9,
             minat=$10, bakat=$11, cita_cita=$12, harapan_setahun=$13, harapan_lulus=$14,
-            kegiatan_harian=$15, ekstrakurikuler=$16, updated_at=NOW()
-        WHERE id=$17 RETURNING *`,
+            kegiatan_harian=$15, ekstrakurikuler=$16, gambaran_diri=$17 updated_at=NOW()
+        WHERE id=$18 RETURNING *`,
         [
             nama, tempat_lahir, tanggal_lahir, alamat, foto_profil,
             nama_ayah, pekerjaan_ayah, nama_ibu, pekerjaan_ibu,
             minat, bakat, cita_cita, harapan_setahun, harapan_lulus,
-            kegiatan_harian, ekstrakurikuler, id
+            kegiatan_harian, ekstrakurikuler, gambaran_diri, id
         ]
     );
     return result.rows[0];

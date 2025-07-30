@@ -12,3 +12,4 @@ exports.hashPassword = async (password) => {
 exports.comparePassword = async (password, hash) => {
     return await bcrypt.compare(password, hash);
 };
+

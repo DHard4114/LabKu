@@ -5,7 +5,7 @@ CREATE TYPE user_role AS ENUM ('admin', 'siswa', 'guru');
 CREATE TABLE users (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
     email VARCHAR(100) NOT NULL UNIQUE,
-    nama VARCHAR(100)NOT NULL,;
+    name VARCHAR(100)NOT NULL,;
     password VARCHAR(255) NOT NULL,
     role user_role DEFAULT 'siswa',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -31,11 +31,12 @@ CREATE TABLE biodata_siswa (
     harapan_lulus TEXT NOT NULL,
     kegiatan_harian TEXT NOT NULL,
     ekstrakurikuler TEXT NOT NULL,
+    gambaran_diri TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
-ALTER TABLE users ADD COLUMN name VARCHAR(100);
+
 
 -- Trigger untuk auto-update timestamp
 CREATE OR REPLACE FUNCTION update_updated_at_column()
