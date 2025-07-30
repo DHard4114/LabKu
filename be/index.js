@@ -4,7 +4,7 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-
+{/*}
 app.use(cors({
   origin: function (origin, callback) {
     const allowedOrigins = [
@@ -22,6 +22,15 @@ app.use(cors({
     }
   },
   credentials: true,
+}));
+*/}
+
+
+
+// Izinkan semua origin
+app.use(cors({
+  origin: '*', // <= mengizinkan SEMUA domain mengakses
+  credentials: false // <= set false kalau pakai '*' untuk origin
 }));
 
 app.use(express.json());
