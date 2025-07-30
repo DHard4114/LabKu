@@ -18,6 +18,7 @@ export default function RegisterPage() {
     name: '',
     email: '',
     password: '',
+    role: 'siswa',
   });
   const [loading, setLoading] = useState(false);
 
