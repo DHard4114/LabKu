@@ -4,41 +4,24 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-{/*}
-app.use(cors({
-  origin: function (origin, callback) {
-    const allowedOrigins = [
-      process.env.FRONT_END_URL,
-      'https://lab-ku.vercel.app',
-      'http://localhost:3000',
-      'https://lab-ku.vercel.app/',
-      'https://lab-4561gzjh4-daffa-hardhans-projects.vercel.app'
-    ];
 
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
-}));
+{/* 
+    app.use(cors({
+        origin: [
+            process.env.FRONT_END_URL,
+            'https://lab-ku.vercel.app',
+            'https://lab-ku-database.vercel.app',
+            'http://localhost:3000'
+        ],
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
+        credentials: true,
+        preflightContinue: false,
+        optionsSuccessStatus: 204
+    }));
 */}
 
-// Izinkan semua origin
-app.use(cors({
-  origin: [
-    process.env.FRONT_END_URL,
-    'https://lab-ku.vercel.app',
-    'https://lab-ku-database.vercel.app',
-    'http://localhost:3000'
-  ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-  preflightContinue: false,
-  optionsSuccessStatus: 204
-}));
+app.use(cors());
 
 
 app.use(express.json());
