@@ -7,7 +7,8 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors({
   origin: function (origin, callback) {
-    const allowedOrigins = ['https://lab-ku.vercel.app', 'http://localhost:3000'];
+    const allowedOrigins = [process.env.FRONT_END_URL
+,'https://lab-ku.vercel.app', 'http://localhost:3000','https://lab-ku.vercel.app/'];
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
