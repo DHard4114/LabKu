@@ -7,9 +7,15 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors({
   origin: function (origin, callback) {
-    const allowedOrigins = [process.env.FRONT_END_URL
-,'https://lab-ku.vercel.app', 'http://localhost:3000','https://lab-ku.vercel.app/'];
-    if (allowedOrigins.includes(origin)) {
+    const allowedOrigins = [
+      process.env.FRONT_END_URL,
+      'https://lab-ku.vercel.app',
+      'http://localhost:3000',
+      'https://lab-ku.vercel.app/', // <- ini redundan
+    ];
+
+    // Jika origin tidak ada (misal Postman atau server-to-server), tetap izinkan
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
@@ -17,6 +23,7 @@ app.use(cors({
   },
   credentials: true,
 }));
+
 
 app.use(express.json());
 
