@@ -193,7 +193,7 @@ export default function LoginPage() {
                   ) : (
                     <>
                       <FlaskConical className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-                      <span>Masuk ke LabFitri</span>
+                      <span>Masuk ke LabKu</span>
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                     </>
                   )}

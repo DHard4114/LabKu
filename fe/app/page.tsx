@@ -142,7 +142,7 @@ export default function Home(): React.JSX.Element {
               Selamat Datang di
             </span>
             <span className="block bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-pulse">
-              LabFitri
+              LabKu
             </span>
             <span className="block text-xl sm:text-2xl md:text-4xl mt-4 bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent font-bold">
               🧪 Laboratorium Digital Bu Fitri
