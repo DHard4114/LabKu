@@ -23,7 +23,6 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 
-
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
@@ -35,6 +34,16 @@ biodataRoutes = require('./src/routes/route.biodata');
 app.use('/api/users', userRoutes);
 app.use('/api/biodata', biodataRoutes);
 
+app.get('/api/health', (req, res) => {
+  res.json({
+    status: 'OK',
+    timestamp: new Date().toISOString(),
+    cors: 'Enabled',
+    origin: req.headers.origin || 'No origin'
+  });
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
