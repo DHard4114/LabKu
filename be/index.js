@@ -11,10 +11,10 @@ app.use(cors({
       process.env.FRONT_END_URL,
       'https://lab-ku.vercel.app',
       'http://localhost:3000',
-      'https://lab-ku.vercel.app/', // <- ini redundan
+      'https://lab-ku.vercel.app/',
+      'https://lab-4561gzjh4-daffa-hardhans-projects.vercel.app'
     ];
 
-    // Jika origin tidak ada (misal Postman atau server-to-server), tetap izinkan
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
@@ -23,7 +23,6 @@ app.use(cors({
   },
   credentials: true,
 }));
-
 
 app.use(express.json());
 
