@@ -10,6 +10,11 @@ exports.getBiodataById = async (id) => {
     return result.rows[0];
 };
 
+exports.getBiodataByUserId = async (userId) => {
+    const result = await db.query('SELECT * FROM biodata_siswa WHERE user_id = $1', [userId]);
+    return result.rows[0];
+};
+
 exports.createBiodata = async (data) => {
     const {
         user_id, nama, tempat_lahir, tanggal_lahir, alamat, foto_profil,
@@ -48,7 +53,7 @@ exports.updateBiodata = async (id, data) => {
             nama=$1, tempat_lahir=$2, tanggal_lahir=$3, alamat=$4, foto_profil=$5,
             nama_ayah=$6, pekerjaan_ayah=$7, nama_ibu=$8, pekerjaan_ibu=$9,
             minat=$10, bakat=$11, cita_cita=$12, harapan_setahun=$13, harapan_lulus=$14,
-            kegiatan_harian=$15, ekstrakurikuler=$16, gambaran_diri=$17 updated_at=NOW()
+            kegiatan_harian=$15, ekstrakurikuler=$16, gambaran_diri=$17, updated_at=NOW()
         WHERE id=$18 RETURNING *`,
         [
             nama, tempat_lahir, tanggal_lahir, alamat, foto_profil,

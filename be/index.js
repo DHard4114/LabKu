@@ -5,7 +5,6 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-
 app.use(cors({
         origin: [
             process.env.FRONT_END_URL,
@@ -19,7 +18,6 @@ app.use(cors({
         preflightContinue: false,
         optionsSuccessStatus: 204
 }));
-
 
 app.use(express.json());
 

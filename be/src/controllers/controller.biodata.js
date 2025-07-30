@@ -20,6 +20,16 @@ exports.getBiodataById = async (req, res) => {
     }
 };
 
+exports.getBiodataByUserId = async (req, res) => {
+    try {
+        const data = await biodataRepo.getBiodataByUserId(req.params.userId);
+        if (!data) return response.notFound(res, 'Biodata not found for this user');
+        return response.success(res, data, 'Biodata found for user');
+    } catch (error) {
+        return response.error(res, error, 'Failed to fetch biodata for user');
+    }
+};
+
 exports.createBiodata = async (req, res) => {
     try {
         // Jika upload file, gunakan req.file.path untuk foto_profil

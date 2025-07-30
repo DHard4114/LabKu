@@ -34,21 +34,13 @@ export const createBiodata = async (data: FormData, token: string) => {
   return res.data;
 };
 
+export const updateBiodata = async (
+  id: string,
+  data: FormData,
+  token: string
+) => {
 
-
-
-export const updateBiodata = async (id: string, data: BiodataFormData, token: string) => {
-  const formData = new FormData();
-
-  Object.entries(data).forEach(([key, value]) => {
-    if (key === 'foto_profil' && value instanceof File) {
-      formData.append('foto_profil', value);
-    } else {
-      formData.append(key, value);
-    }
-  });
-
-  const res = await axios.put(`${API_BASE_URL}/${id}`, formData, {
+  const res = await axios.put(`${API_BASE_URL}/${id}`, data, {
     headers: {
       'Content-Type': 'multipart/form-data',
       Authorization: `Bearer ${token}`,
@@ -75,10 +67,22 @@ export const getAllBiodata = async (token: string) => {
   return res.data;
 };
 
-// ✅ GET - Detail Biodata by ID (Guru Only - pakai token)
 export const getBiodataById = async (id: string, token: string) => {
   const res = await axios.get(`${API_BASE_URL}/${id}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return res.data;
 };
+
+// services/api/biodata.ts
+
+export const getBiodataByUserId = async (userId: string, token: string) => {
+  if (!userId) throw new Error('User ID not found in localStorage');
+  const res = await axios.get(`${API_BASE_URL}/user/${userId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return res;
+};
+
+
+

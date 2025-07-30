@@ -3,7 +3,7 @@ export interface BiodataFormData {
   tempat_lahir: string;
   tanggal_lahir: string;
   alamat: string;
-  foto_profil: File | null;
+  foto_profil: File | string | null;
   nama_ayah: string;
   pekerjaan_ayah: string;
   nama_ibu: string;
@@ -20,11 +20,11 @@ export interface BiodataFormData {
 
 export interface Biodata {
   id: string;
+  userId: string;
   nama: string;
   tempat_lahir: string;
   tanggal_lahir: string;
   alamat: string;
-  foto_profil: string;
   nama_ayah: string;
   pekerjaan_ayah: string;
   nama_ibu: string;
@@ -37,6 +37,7 @@ export interface Biodata {
   kegiatan_harian: string;
   ekstrakurikuler: string;
   gambaran_diri: string;
+  foto_profil: string;
 }
 
 
